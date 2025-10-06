@@ -11,7 +11,7 @@ SCRIPT_NAME=$( echo $0 | cut -d "." -f1)
 LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
 
 mkdir -p $LOGS_FOLDER
-echo "Script started executed at: $(date)"
+echo "Script started executed at: $(date)" | tee -a $LOG_FILE
 
 if [ $USERID -ne 0 ]; then
     echo -e "$R ERROR:: $N Please run this script with root privilage"
@@ -20,10 +20,10 @@ fi
 
 VALIDATE(){ # functions receive inputs through args
     if [ $1 -ne 0 ]; then
-        echo -e "$R ERROR::$N Installing $2 is failure"
+        echo -e "$R ERROR::$N Installing $2 is failure" | tee -a $LOG_FILE
     exit 1
     else
-        echo -e "Installing $2 is $G success $N"
+        echo -e "Installing $2 is $G success $N" | tee -a $LOG_FILE
     fi
 }
 
@@ -32,7 +32,7 @@ if [ $? -ne 0 ]; then
     dnf install mysql -y &>>$LOG_FILE
     VALIDATE $? "MYSQL"
 else
-    echo -e "MySQL already exist... $Y SKIPPING $N "
+    echo -e "MySQL already exist... $Y SKIPPING $N " | tee -a $LOG_FILE
 fi
 
 dnf list installed nginx &>>$LOG_FILE
@@ -40,7 +40,7 @@ if [ $? -ne 0 ]; then
     dnf install nginx -y &>>$LOG_FILE
     VALIDATE $? "Nginx"
 else
-    echo -e "Nginx already exist...$Y SKIPPING $N "
+    echo -e "Nginx already exist...$Y SKIPPING $N " | tee -a $LOG_FILE
 fi
 
 dnf list installed python3 &>>$LOG_FILE
@@ -48,5 +48,5 @@ if [ $? -ne 0 ]; then
     dnf install python3 -y &>>$LOG_FILE
     VALIDATE $? "python3"
 else
-    echo -e "Python3 already exist...$Y SKIPPING $N "
+    echo -e "Python3 already exist...$Y SKIPPING $N " | tee -a $LOG_FILE
 fi
