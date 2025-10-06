@@ -14,4 +14,4 @@ LEADERS=("Modi" "Putin" "Trump" "Trudo")
 
 
 echo "All leaders: ${LEADERS[@]}"
-echo "First Leader: ${Leaders[0]}"
+echo "First Leader: ${LEADERS[0]}"
