@@ -5,7 +5,7 @@ USERID=$(id -u)
 if [ $USERID -ne 0 ]; then
     echo "ERROR:: Please run this script with root privilage"
     exit 1 # failure is other than 0
-f1
+fi
 
 VALIDATE(){ # functions receive inputs through args
     if [ $1 -ne 0 ]; then
