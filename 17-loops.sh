@@ -32,7 +32,7 @@ VALIDATE(){ # functions receive inputs through args
 for package in $@
 do 
     #check if the package is already installed or not
-    dnf installed $package &>>$LOG_FILE
+    dnf list installed $package &>>$LOG_FILE
 
     #if exit status is 0, already installed. -ne 0 need to install it
     if [ $? -ne 0 ]; then
