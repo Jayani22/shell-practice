@@ -4,4 +4,4 @@ NAME=INDIA
 echo "My Country: $NAME"
 echo "PID of SCRIPT-1: $$"
 #sh 20-script-2.sh
-source ./21-script-2.sh
+source ./20-script-2.sh
