@@ -12,7 +12,7 @@ DAYS=${3:-14} #if not provided considered as 14 days
 
 LOGS_FOLDER="/var/log/shell-script"
 SCRIPT_NAME=$( echo $0 | cut -d "." -f1)
-LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
+LOG_FILE="$LOGS_FOLDER/backup.log" # modified to run the script as command
 
 mkdir -p $LOGS_FOLDER
 echo "Script started executed at: $(date)" | tee -a $LOG_FILE
@@ -27,7 +27,7 @@ USAGE(){
     exit 1
 }
 
-### Check SOURCE_DIR and DEST_DIR passed or not ####3
+### Check SOURCE_DIR and DEST_DIR passed or not ####
 if [ $# -lt 2 ]; then
     USAGE
 fi
@@ -59,7 +59,7 @@ if [ ! -z "${FILES}" ]; then
     ### Check Archieval Success or not ###
     if [ -f $ZIP_FILE_NAME ]
     then
-        echo "Archeival ... $G SUCCESS $N"
+        echo -e "Archeival ... $G SUCCESS $N"
 
         ### Delete if success ###
         while IFS= read -r filepath
@@ -67,9 +67,9 @@ if [ ! -z "${FILES}" ]; then
             echo "Deleting the file: $filepath"
             rm -rf $filepath
             echo "Deleted the file: $filepath"
-        done <<< $FILES_TO_DELETE
+        done <<< $FILES
     else
-        echo "Archieval ... $R FAILURE $N"
+        echo -e "Archieval ... $R FAILURE $N"
         exit 1
     fi
 else
