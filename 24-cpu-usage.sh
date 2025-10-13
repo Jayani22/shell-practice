@@ -14,4 +14,4 @@ do
     fi
 done <<< $DISK_USAGE
 
-echo "Message Body: $Message"
+echo "Message Body: $MESSAGE"
