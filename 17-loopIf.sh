@@ -6,3 +6,14 @@ do
         echo "$i"
     fi
 done
+
+echo "Enter a number"
+read NUM
+
+if [ $NUM -gt 50 ]; then 
+    echo "High"
+elif [ $NUM -ge 20 ] && [ $NUM -le 50 ]; then
+    echo "Medium"
+else
+    echo "Low"
+fi
