@@ -11,6 +11,8 @@ else
 fi
 
 # -gt -> greater than
+# -ge -> greater than or equal to
+# -le -> less than or equal to
 # -eq -> equal
 # -ne -> not equal
 # -lt -> less than
