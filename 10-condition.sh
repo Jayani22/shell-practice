@@ -6,7 +6,7 @@ read NUM1 NUM2
 ADD=$(($NUM1 + $NUM2))
 
 if [ $ADD -gt 100 ]; then
-    echo "Big Number"
+    echo "$ADD Big Number"
 else
-    echo "Small number"
+    echo "$ADD Small number"
 fi
